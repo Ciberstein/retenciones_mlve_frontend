@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Modal from '../../../../elements/Modal'
 import { Input } from '../../../../elements/user/Input'
 import { useForm } from 'react-hook-form';
-import { Button } from '../../../../elements/user/Button';s
+import { Button } from '../../../../elements/user/Button';
 import { Select } from '../../../../elements/user/Select';
 
 export const NewAccountModal = ({ open, setOpen }) => {
