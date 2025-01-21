@@ -21,7 +21,6 @@ import { CustomersPage as AdminCustomersPage } from "./components/pages/admin/cu
 {/* End Admin Imports */}
 
 function App() {
-
   return (
     <Routes>
       <Route path="*" element={<Navigate to="/" />}/>
