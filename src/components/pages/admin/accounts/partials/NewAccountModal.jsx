@@ -4,13 +4,51 @@ import { Input } from '../../../../elements/user/Input'
 import { useForm } from 'react-hook-form';
 import { Button } from '../../../../elements/user/Button';
 import { Select } from '../../../../elements/user/Select';
+import axios_instance from '../../../../../utils/apiConfig';
+import { useDispatch } from 'react-redux';
+import { setLoad } from '../../../../../store/slices/loader.slice';
+import Swal from 'sweetalert2';
+import { accountThunk } from '../../../../../store/slices/account.slice';
 
 export const NewAccountModal = ({ open, setOpen }) => {
 
-  const { register, handleSubmit, formState: { errors }} = useForm();
+  const { register, handleSubmit, reset, formState: { errors }} = useForm();
+  const dispatch = useDispatch()
 
   const submit = async (data) => {
-  
+    dispatch(setLoad(false))
+    const url = '/users'
+    const formData = data;
+
+    formData.role_id = Number(data.role_id)
+
+    await axios_instance.post(url, formData)
+      .then((res) => {
+        Swal.fire({
+          position: "bottom-end",
+          icon: "success",
+          toast: true,
+          title: res.data.detail,
+          showConfirmButton: false,
+          timer: 3000
+        });
+        dispatch(accountThunk())
+        setOpen(false)
+        reset()
+      })
+      .catch((err) => {
+        console.error(err)
+        Swal.fire({
+          position: "bottom-end",
+          icon: "error",
+          toast: true,
+          title: err.response.data.detail,
+          showConfirmButton: false,
+          timer: 3000
+        });
+      })
+      .finally(() => dispatch(setLoad(true)))
+
   }
 
   const role = [
@@ -71,8 +109,8 @@ export const NewAccountModal = ({ open, setOpen }) => {
           }}
         />
         <Select
-          id="role"
-          name="role"
+          id="role_id"
+          name="role_id"
           label="Rol"
           options={role}
           register={{

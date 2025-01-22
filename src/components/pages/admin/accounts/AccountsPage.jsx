@@ -3,7 +3,6 @@ import { AccountsTable } from './partials/AccountsTable'
 import { AccountsManage } from './partials/AccountsManage'
 import { useDispatch, useSelector } from 'react-redux'
 import { accountThunk } from '../../../../store/slices/account.slice'
-import axios_instance from '../../../../utils/apiConfig'
 
 export const AccountsPage = () => {
 
@@ -15,7 +14,6 @@ export const AccountsPage = () => {
   useEffect(() => {
     dispatch(accountThunk())
   }, [refresh])
-
 
   return (
     <div className="flex flex-col gap-4">
