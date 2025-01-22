@@ -22,8 +22,6 @@ export const PosAuthNavbar = ({ className = '', openSidebar, setOpenSidebar }) =
 
   const navigate = useNavigate();
 
-  console.log(axios_instance.defaults.headers)
-
   const logout = async () => {
     const url = `auth/logout`;
 

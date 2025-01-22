@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom"
+import { Loader } from "./components/shared/Loader";
 
 {/* Auth Imports */}
 import { LoginPage } from "./components/pages/auth/login/LoginPage";
@@ -22,24 +23,27 @@ import { CustomersPage as AdminCustomersPage } from "./components/pages/admin/cu
 
 function App() {
   return (
-    <Routes>
-      <Route path="*" element={<Navigate to="/" />}/>
-      <Route path="/login" element={<LoginPage />}/>
-      <Route path="/recovery" element={<RecoveryPage />}/>
-      <Route path="/" element={<UserProtectedRoutes />}>
+    <div>
+      <Loader />
+      <Routes>
         <Route path="*" element={<Navigate to="/" />}/>
-        <Route path="/" element={<UserHomePage />}/>
-        <Route path="/invoices" element={<UserInvoicesPage />}/>
-        <Route path="/settings" element={<UserSettingsPage />}/>
-      </Route>
-      <Route path="/admin" element={<AdminProtectedRoutes />}>
-        <Route path="*" element={<Navigate to="/admin" />}/>
-        <Route path="/admin" element={<AdminHomePage />}/>
-        <Route path="/admin/accounts" element={<AdminAccountsPage />}/>
-        <Route path="/admin/invoices" element={<AdminInvoicesPage />}/>
-        <Route path="/admin/customers" element={<AdminCustomersPage />}/>
-      </Route>
-    </Routes>
+        <Route path="/login" element={<LoginPage />}/>
+        <Route path="/recovery" element={<RecoveryPage />}/>
+        <Route path="/" element={<UserProtectedRoutes />}>
+          <Route path="*" element={<Navigate to="/" />}/>
+          <Route path="/" element={<UserHomePage />}/>
+          <Route path="/invoices" element={<UserInvoicesPage />}/>
+          <Route path="/settings" element={<UserSettingsPage />}/>
+        </Route>
+        <Route path="/admin" element={<AdminProtectedRoutes />}>
+          <Route path="*" element={<Navigate to="/admin" />}/>
+          <Route path="/admin" element={<AdminHomePage />}/>
+          <Route path="/admin/accounts" element={<AdminAccountsPage />}/>
+          <Route path="/admin/invoices" element={<AdminInvoicesPage />}/>
+          <Route path="/admin/customers" element={<AdminCustomersPage />}/>
+        </Route>
+      </Routes>
+    </div>
   )
 }
 

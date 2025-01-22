@@ -9,14 +9,18 @@ import { useForm } from 'react-hook-form'
 import axios_instance from '../../../../utils/apiConfig'
 import Swal from 'sweetalert2'
 import { jwtDecode } from "jwt-decode";
+import { useDispatch } from 'react-redux'
+import { setLoad } from '../../../../store/slices/loader.slice'
 
 export const LoginPage = () => {
 
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { register, handleSubmit, formState: { errors }} = useForm();
 
   const submit = async (data) => {
+    dispatch(setLoad(true));
     const url = `/auth/login`;
 
     await axios_instance.post(url, data, {
@@ -44,6 +48,7 @@ export const LoginPage = () => {
           timer: 3000
         });
       })
+      .finally(() => dispatch(setLoad(true)))
   }
 
   return (

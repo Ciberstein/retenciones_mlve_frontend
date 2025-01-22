@@ -34,7 +34,7 @@ export const Select = ({
           { label &&
             <label
               htmlFor={props.id || null}
-              className="text-sm text-gray-500"
+              className="text-sm text-black"
             >
               {label || null}
             </label>        
