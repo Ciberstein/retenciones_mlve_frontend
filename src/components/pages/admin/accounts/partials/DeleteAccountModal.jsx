@@ -1,9 +1,6 @@
-import React, { useState } from 'react'
 import Modal from '../../../../elements/Modal'
-import { Input } from '../../../../elements/user/Input'
 import { useForm } from 'react-hook-form';
 import { Button } from '../../../../elements/user/Button';
-import { Select } from '../../../../elements/user/Select';
 import axios_instance from '../../../../../utils/apiConfig';
 import { useDispatch } from 'react-redux';
 import { setLoad } from '../../../../../store/slices/loader.slice';
@@ -16,10 +13,37 @@ export const DeleteAccountModal = ({ open, setOpen, selected, setSelected }) => 
   const { handleSubmit } = useForm();
   const dispatch = useDispatch()
 
+
   const submit = async () => {
-   dispatch(accountThunk())
-   setSelected(false)
-   setOpen(false)
+    dispatch(setLoad(false))
+    const url = `/users/${selected.id}`
+
+    await axios_instance.delete(url, { withCredentials: true })
+      .then((res) => {
+        dispatch(accountThunk())
+        setSelected(false)
+        setOpen(false)
+        console.log(res.data)
+        Swal.fire({
+          position: "bottom-end",
+          icon: "success",
+          toast: true,
+          title: res.data.detail,
+          showConfirmButton: false,
+          timer: 3000
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          position: "bottom-end",
+          icon: "error",
+          toast: true,
+          title: err.response.data.detail,
+          showConfirmButton: false,
+          timer: 3000
+        });
+      })
+      .finally(() => dispatch(setLoad(true)))
   }
 
   return (

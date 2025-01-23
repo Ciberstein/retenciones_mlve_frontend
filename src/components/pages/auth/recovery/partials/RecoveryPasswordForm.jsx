@@ -2,19 +2,62 @@ import React, { useState } from 'react'
 import Card from '../../../../elements/Card'
 import { Input } from '../../../../elements/user/Input'
 import { EyeIcon, EyeSlashIcon } from '@heroicons/react/20/solid'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '../../../../elements/user/Button'
 import { useForm } from 'react-hook-form'
 import { PreAuthLayout } from '../../../../layouts/PreAuthLayout'
+import axios_instance from '../../../../../utils/apiConfig'
+import Swal from 'sweetalert2'
 
 export const RecoveryPasswordForm = ({ username, token }) => {
 
+  const navigate = useNavigate();
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
   const { register, handleSubmit, formState: { errors }} = useForm();
 
   const submit = async (data) => {
-    console.log(data)
+
+    if(data.new_password == data.new_password_2) {
+      const url = '/auth/reset_password';
+      const formdata = data;
+
+      formdata.token = token;
+      formdata.username = username;
+
+      await axios_instance.post(url, formdata)
+        .then((res) => {
+          navigate("/login");
+          Swal.fire({
+            position: "bottom-end",
+            icon: "success",
+            toast: true,
+            title: res.data.detail,
+            showConfirmButton: false,
+            timer: 5000
+          });
+        })
+        .catch((err) => {
+          Swal.fire({
+            position: "bottom-end",
+            icon: "error",
+            toast: true,
+            title: err.response.data.detail,
+            showConfirmButton: false,
+            timer: 5000
+          });
+        })
+    }
+    else {
+      Swal.fire({
+        position: "bottom-end",
+        icon: "error",
+        toast: true,
+        title: "Las contraseñas no coinciden",
+        showConfirmButton: false,
+        timer: 5000
+      });
+    }
   }
 
   return (
@@ -31,8 +74,8 @@ export const RecoveryPasswordForm = ({ username, token }) => {
       <Card className="w-full sm:max-w-96">
         <form className="flex flex-col gap-6" onSubmit={handleSubmit(submit)}>
           <Input 
-            id="password"
-            name="password"
+            id="new_password"
+            name="new_password"
             type={show1 ? 'text' : 'password'}
             label="Nueva contraseña"
             element={
@@ -55,8 +98,8 @@ export const RecoveryPasswordForm = ({ username, token }) => {
             }}
           />
           <Input 
-            id="password_2"
-            name="password_2"
+            id="new_password_2"
+            name="new_password_2"
             type={show2 ? 'text' : 'password'}
             label="Repetir contraseña"
             element={
