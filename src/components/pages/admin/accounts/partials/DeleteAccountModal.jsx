@@ -5,7 +5,7 @@ import axios_instance from '../../../../../utils/apiConfig';
 import { useDispatch } from 'react-redux';
 import { setLoad } from '../../../../../store/slices/loader.slice';
 import Swal from 'sweetalert2';
-import { accountThunk } from '../../../../../store/slices/account.slice';
+import { usersThunk } from '../../../../../store/slices/users.slice';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 export const DeleteAccountModal = ({ open, setOpen, selected, setSelected }) => {
@@ -20,7 +20,7 @@ export const DeleteAccountModal = ({ open, setOpen, selected, setSelected }) => 
 
     await axios_instance.delete(url, { withCredentials: true })
       .then((res) => {
-        dispatch(accountThunk())
+        dispatch(usersThunk())
         setSelected(false)
         setOpen(false)
         console.log(res.data)

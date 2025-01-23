@@ -8,7 +8,7 @@ import axios_instance from '../../../../../utils/apiConfig';
 import { useDispatch } from 'react-redux';
 import { setLoad } from '../../../../../store/slices/loader.slice';
 import Swal from 'sweetalert2';
-import { accountThunk } from '../../../../../store/slices/account.slice';
+import { usersThunk } from '../../../../../store/slices/users.slice';
 
 export const NewAccountModal = ({ open, setOpen }) => {
 
@@ -32,7 +32,7 @@ export const NewAccountModal = ({ open, setOpen }) => {
           showConfirmButton: false,
           timer: 3000
         });
-        dispatch(accountThunk())
+        dispatch(usersThunk())
         setOpen(false)
         reset()
       })

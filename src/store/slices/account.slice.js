@@ -15,9 +15,10 @@ export const { setAccount } = accountSlice.actions;
 export default accountSlice.reducer;
 
 export const accountThunk =
-  (page = 1, limit = "") => async (dispatch) => {
+  () => async (dispatch) => {
+    const accId = sessionStorage.getItem("user_id")
     dispatch(setLoad(false));
-    const url = `/users?page=${page}&limit=${limit}`;
+    const url = `/users/${accId}`;
     await axios_instance
       .get(url, { withCredentials: true })
       .then((res) => dispatch(setAccount(res.data)))

@@ -5,6 +5,7 @@ import { Sidebar } from '../shared/user/Sidebar'
 import { useDispatch, useSelector } from 'react-redux'
 import { refreshThunk } from '../../store/slices/refresh.slice'
 import axios_instance from '../../utils/apiConfig'
+import { accountThunk } from '../../store/slices/account.slice'
 
 export const PosAuthLayout = ({ children, className = '' }) => {
 
@@ -14,6 +15,7 @@ export const PosAuthLayout = ({ children, className = '' }) => {
 
   useEffect(() => {
     dispatch(refreshThunk())
+    dispatch(accountThunk())
   }, []);
 
   useEffect(() => {

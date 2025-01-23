@@ -8,7 +8,6 @@ import axios_instance from '../../../../../utils/apiConfig';
 import { useDispatch } from 'react-redux';
 import { setLoad } from '../../../../../store/slices/loader.slice';
 import Swal from 'sweetalert2';
-import { accountThunk } from '../../../../../store/slices/account.slice';
 
 export const EditAccountModal = ({ open, setOpen, selected, setSelected }) => {
 

@@ -4,6 +4,7 @@ import { NavLink } from '../../elements/user/NavLink';
 import { Link, useNavigate } from 'react-router-dom';
 import axios_instance from '../../../utils/apiConfig';
 import Swal from 'sweetalert2';
+import { useSelector } from 'react-redux';
 
 export const PreAuthNavbar = ({ className = '' }) => {
 
@@ -21,6 +22,7 @@ export const PreAuthNavbar = ({ className = '' }) => {
 export const PosAuthNavbar = ({ className = '', openSidebar, setOpenSidebar }) => {
 
   const navigate = useNavigate();
+  const account = useSelector(state => state.account)
 
   const logout = async () => {
     const url = `auth/logout`;
@@ -58,7 +60,7 @@ export const PosAuthNavbar = ({ className = '', openSidebar, setOpenSidebar }) =
               >
               <UserCircleIcon className="size-6" />
               <span className="hidden sm:block">
-                {`Luis Daniel Rojas Urdaneta`}
+                {account?.name}
               </span>
               <div className="pr-2 hidden sm:block">
                 <ChevronDownIcon aria-hidden="true" className="size-5 text-gray-900 dark:text-gray-200" />
