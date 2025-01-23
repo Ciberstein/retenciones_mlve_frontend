@@ -20,7 +20,7 @@ export const LoginPage = () => {
   const { register, handleSubmit, formState: { errors }} = useForm();
 
   const submit = async (data) => {
-    dispatch(setLoad(true));
+    dispatch(setLoad(false));
     const url = `/auth/login`;
 
     await axios_instance.post(url, data, {
