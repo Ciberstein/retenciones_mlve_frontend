@@ -102,11 +102,11 @@ export const LoginPage = () => {
                 },
               }}
             />
-            <Button type="submit">
+            <Button type="submit" size="lg">
               Ingresar
             </Button>
             <hr />
-            <Link to="/recovery" className="hover:underline text-meli-blue-primary-500 text-s text-center">
+            <Link to="/recovery" className="hover:underline text-meli-blue-500 text-s text-center">
               Olvidé mi contraseña
             </Link>
           </form>

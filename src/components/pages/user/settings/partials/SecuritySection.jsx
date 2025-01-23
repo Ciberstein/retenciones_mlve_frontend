@@ -19,7 +19,7 @@ export const SecuritySection = () => {
   }
 
   return (
-    <Card className="flex flex-col !p-0">
+    <Card className="flex flex-col !p-0 sm:max-w-xl sm:mx-auto">
       <div className="flex gap-2 items-center p-4 border-b">
         <Lock />
         <h3 className="text-lg font-medium">Seguridad</h3>

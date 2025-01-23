@@ -3,22 +3,42 @@ import React from 'react';
 export const Button = ({
   as: As = 'button',
   children = '',
-  hierarchy = 'loud',
+  hierarchy = 'normal',
   className = '',
-  size = 'md',
+  color = "blue",
+  size = "lg",
   ...props
 }) => {
 
+  const sizes = {
+    sm: "text-xs px-3 p-2",
+    md: "text-sm px-4 py-2",
+    lg: "text-base px-6 py-3"
+  }
+
   const variant = {
-    loud:  "bg-meli-blue-primary-500 text-white hover:bg-[#2868c7]",
-    quiet: "bg-meli-blue-secondary-500/50 text-meli-blue-primary-500",
-    transparent: "hover:bg-meli-blue-secondary-500/40 text-meli-blue-primary-500"
+    blue: {
+      normal: "bg-meli-blue-500 hover:bg-meli-blue-600 text-white ",
+      quiet: "bg-meli-blue-200 hover:bg-meli-blue-300 text-meli-blue-500",
+      transparent: "hover:bg-meli-blue-100 text-meli-blue-500"
+    },
+    green: {
+      normal: "bg-brand-green-500 hover:bg-brand-green-600 text-white",
+      quiet: "bg-brand-green-200 hover:bg-brand-green-300 text-brand-green-500",
+      transparent: "hover:bg-brand-green-100 text-brand-green-500"
+    },
+    red: {
+      normal: "bg-brand-red-500 hover:bg-brand-red-600 text-white",
+      quiet: "bg-brand-red-200 hover:bg-brand-red-300 text-brand-red-500",
+      transparent: "hover:bg-brand-red-100 text-brand-red-500"
+    },
   };
 
   return (
     <As
-      className={`rounded-lg px-6 py-3 text-center transition-colors ease-in-out
-        ${variant[hierarchy]}
+      className={`rounded-md text-center transition-colors ease-in-out
+        ${variant[color][hierarchy]}
+        ${sizes[size]}
         ${className}`}
       {...props}
     >

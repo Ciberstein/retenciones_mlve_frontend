@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
 import { Loader } from "./components/shared/Loader";
 
 {/* Auth Imports */}

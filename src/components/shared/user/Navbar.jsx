@@ -9,7 +9,7 @@ export const PreAuthNavbar = ({ className = '' }) => {
 
   return (
     <nav className={`flex gap-4 items-center lg:px-40 xl:px-56 p-3
-      justify-between bg-meli-yellow-500 ${className}`}
+      justify-between bg-meli-brand-500 ${className}`}
     >
       <Link to="/">
         <img src={"/img/logo_large_plus@2x.webp"} className="max-h-8"/>
@@ -38,7 +38,7 @@ export const PosAuthNavbar = ({ className = '', openSidebar, setOpenSidebar }) =
   }
 
   return (
-    <nav className={`p-3 lg:px-0 bg-meli-yellow-500 shadow-lg ${className}`}>
+    <nav className={`p-3 lg:px-0 bg-meli-brand-500 shadow-lg ${className}`}>
       <div className="mx-auto lg:w-3/4 xl:w-4/5 flex gap-4 justify-between items-center">
         <div className="flex gap-4 justify-between items-center">
           <NavLink as="button" className="lg:hidden" onClick={() => setOpenSidebar(!openSidebar)}>

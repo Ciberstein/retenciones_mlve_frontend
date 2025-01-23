@@ -14,7 +14,7 @@ export const EmailSent = () => {
           <span>A continuación,</span>
           <span>Siga los pasos indicados en el mensaje recibido en su bandeja de entrada</span>
         </div>
-        <Link to="/login" className="hover:underline text-meli-blue-primary-500 text-s text-center">
+        <Link to="/login" className="hover:underline text-meli-blue-500 text-s text-center">
           Volver al inicio
         </Link>
       </div>

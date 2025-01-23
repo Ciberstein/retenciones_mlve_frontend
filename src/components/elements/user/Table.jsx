@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Pagination from '@mui/lab/Pagination';
 import cutString from '../../../utils/cutString';
 import { ChevronDoubleDownIcon, ChevronUpIcon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { useTranslation } from 'react-i18next';
 import { Input } from './Input';
 import { SearchOffOutlined } from '@mui/icons-material';
 
@@ -73,6 +72,11 @@ export const Table = ({
   size = 'sm',
   title = null,
   check = null,
+  selectRow = {
+    active: false,
+    selected: null,
+    setSelected: null,
+  },
   dropdown = {
     header: '',
     params: {},
@@ -229,7 +233,7 @@ export const Table = ({
 									name="searchInput"
 									placeholder="Buscar"
 									className="!rounded-full dark:border-admin-dark-700 px-3"
-									size={size}
+									size={"md"}
 									value={searchText}
 									onChange={handleSearchChange}
 									element={
@@ -256,7 +260,14 @@ export const Table = ({
           { currentItems.length > 0
             ? currentItems.map((tr, index) => (
               <>
-                <tr className={`border-b ${variants[size].className}`}>
+                <tr 
+                  className={`border-b 
+                    ${selectRow.active && 'hover:bg-gray-200/70 cursor-pointer'}
+                    ${selectRow.selected === tr && 'bg-gray-200/70 text-blue-400'}
+                    ${variants[size].className}`
+                  }
+                  onClick={() => { selectRow.active && selectRow.setSelected(tr)}}
+                >
                   { check && (
                     <td>
                       <div className="flex items-center justify-center px-4 py-2">

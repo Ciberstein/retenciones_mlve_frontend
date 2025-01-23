@@ -76,11 +76,11 @@ export const RecoveryPage = () => {
                 },
               }}
             />
-            <Button type="submit">
+            <Button type="submit" size="lg">
               Enviar
             </Button>
             <hr />
-            <Link to="/login" className="hover:underline text-meli-blue-primary-500 text-s text-center">
+            <Link to="/login" className="hover:underline text-meli-blue-500 text-s text-center">
               Iniciar sesión
             </Link>
           </form>

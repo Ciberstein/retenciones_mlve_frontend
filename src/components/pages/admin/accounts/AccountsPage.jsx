@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { AccountsTable } from './partials/AccountsTable'
 import { AccountsManage } from './partials/AccountsManage'
 import { useDispatch, useSelector } from 'react-redux'
@@ -7,7 +7,7 @@ import { accountThunk } from '../../../../store/slices/account.slice'
 export const AccountsPage = () => {
 
   const dispatch = useDispatch();
-
+  const [selectedTr, setSelectedTr] = useState(null); 
   const refresh = useSelector((state) => state.refresh)
   const account = useSelector((state) => state.account)
 
@@ -17,8 +17,8 @@ export const AccountsPage = () => {
 
   return (
     <div className="flex flex-col gap-4">
-      <AccountsManage />
-      <AccountsTable data={account} />
+      <AccountsManage selected={selectedTr} setSelected={setSelectedTr} />
+      <AccountsTable data={account} selected={selectedTr} setSelected={setSelectedTr}  />
     </div>
   )
 }

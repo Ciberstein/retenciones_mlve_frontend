@@ -7,7 +7,7 @@ export const Select = ({
   variant = 'normal',
   children = '',
   className = '',
-  size = 'md',
+  size = 'lg',
   icon = null,
   check = true,
   placeholder = 'Select any option',
@@ -21,10 +21,8 @@ export const Select = ({
   ...props
 }) => {
   const variants = {
-    sm: 'text-sm p-2',
-    md: 'text-md p-3',
-    lg: 'text-lg p-4',
-    xl: 'text-xl p-5',
+    md: 'text-sm p-2',
+    lg: 'text-md p-3',
   };
 
   return (
