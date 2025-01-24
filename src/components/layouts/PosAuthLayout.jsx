@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Navbar } from '../shared/user/Navbar'
-import { Footer } from '../shared/user/Footer'
+import { PosFooter as Footer } from '../shared/user/Footer'
 import { Sidebar } from '../shared/user/Sidebar'
 import { useDispatch, useSelector } from 'react-redux'
 import { refreshThunk } from '../../store/slices/refresh.slice'

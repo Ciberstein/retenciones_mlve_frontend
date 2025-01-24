@@ -1,5 +1,5 @@
 import { Navbar } from '../shared/user/Navbar'
-import { Footer } from '../shared/user/Footer'
+import { PreFooter as Footer } from '../shared/user/Footer'
 import { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
