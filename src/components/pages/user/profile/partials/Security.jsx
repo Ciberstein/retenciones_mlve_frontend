@@ -47,8 +47,8 @@ const Password = () => {
     return (
       <div className="flex flex-col gap-6">
         <Breadcrums routes={routes} />
-        <Card className="flex flex-col !p-0">
-          <form className="flex flex-col gap-4 p-4" onSubmit={handleSubmit(submit)}>
+        <Card className="flex flex-col">
+          <form className="flex flex-col gap-4" onSubmit={handleSubmit(submit)}>
             <h4 className="font-medium">Actualizar contraseña</h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="sm:!col-span-2">
@@ -141,7 +141,7 @@ const Password = () => {
       <Breadcrums routes={routes} />
       <h1 className="text-2xl font-medium">Contraseña</h1>
       <div className="flex flex-col gap-6">
-        <Card className="flex flex-col gap-4">
+        <Card className="flex flex-col gap-4 !p-4">
           <div className="flex flex-col">
             <h1 className="text-lg">Contraseña</h1>
             <span>*************</span>            
@@ -192,7 +192,7 @@ const Verify = () => {
       <Breadcrums routes={routes} />
       <h1 className="text-2xl font-medium">Configura tus métodos de verificación</h1>
       <div className="flex flex-col gap-6">
-        <Card className="flex flex-col !px-0">
+        <Card className="flex flex-col !px-0 !py-4">
           <MenuItem
             icon={<PasswordOutlined className="size-6" />}
             url="/profile/security/verify/password"
@@ -232,7 +232,7 @@ const Security = () => {
     <div className="flex flex-col gap-6">
       <Breadcrums routes={routes} />
       <div className="flex flex-col gap-6">
-        <Card className="flex flex-col !px-0">
+        <Card className="flex flex-col !px-0 !py-4">
           <MenuItem
             icon={<KeyIcon className="size-6" />}
             url="/profile/security/verify"

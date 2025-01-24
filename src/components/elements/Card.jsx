@@ -8,7 +8,7 @@ const Card = ({
 }) => {
   return (
     <As
-      className={`rounded-lg p-4 shadow-md bg-white
+      className={`rounded-lg p-8 shadow-md bg-white
         ${className}`}
       {...props}
     >

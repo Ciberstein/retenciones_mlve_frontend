@@ -15,14 +15,14 @@ const ProfilePage = () => {
 
   return (
     <div className="flex flex-col gap-6 sm:max-w-3xl sm:mx-auto">
-      <Card className="flex gap-6">
+      <Card className="flex gap-6 !p-4">
         <UserCircleIcon className="!size-12 sm:!size-24" />
         <div className="flex flex-col justify-center">
           <span className="font-semibold sm:text-xl">{account.name}</span>
           <span className="font-normal sm:text-base">{account.email}</span>
         </div>
       </Card>
-      <Card className="flex flex-col !px-0">
+      <Card className="flex flex-col !px-0 !py-4">
         <MenuItem
           icon={<UserIcon className="size-6" />}
           url="/profile/account"
