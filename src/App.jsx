@@ -10,7 +10,7 @@ import { RecoveryPage } from "./components/pages/auth/recovery/RecoveryPage";
 import { ProtectedRoutes as UserProtectedRoutes } from "./components/pages/session/user/ProtectedRoutes";
 import { HomePage as UserHomePage } from "./components/pages/user/home/HomePage";
 import { InvoicesPage as UserInvoicesPage } from "./components/pages/user/invoices/InvoicesPage";
-import { SettingsPage as UserSettingsPage } from "./components/pages/user/settings/SettingsPage";
+import { ProfilePage as UserProfilePage } from "./components/pages/user/profile/ProfilePage";
 {/* End User Imports */}
 
 {/* Admin Imports */}
@@ -33,14 +33,21 @@ function App() {
           <Route path="*" element={<Navigate to="/" />}/>
           <Route path="/" element={<UserHomePage />}/>
           <Route path="/invoices" element={<UserInvoicesPage />}/>
-          <Route path="/settings" element={<UserSettingsPage />}/>
+          <Route path="/profile" element={<UserProfilePage />}>
+            <Route path="security" element={<UserProfilePage.Security />}>
+              <Route path="verify" element={<UserProfilePage.Security.Verify />}>
+                <Route path="password" element={<UserProfilePage.Security.Verify.Password />} />
+                <Route path="email" element={<UserProfilePage.Security.Verify.Email />} />
+              </Route>
+            </Route>
+          </Route>
         </Route>
         <Route path="/admin" element={<AdminProtectedRoutes />}>
           <Route path="*" element={<Navigate to="/admin" />}/>
           <Route path="/admin" element={<AdminHomePage />}/>
-          <Route path="/admin/accounts" element={<AdminAccountsPage />}/>
-          <Route path="/admin/invoices" element={<AdminInvoicesPage />}/>
-          <Route path="/admin/customers" element={<AdminCustomersPage />}/>
+          <Route path="accounts" element={<AdminAccountsPage />}/>
+          <Route path="invoices" element={<AdminInvoicesPage />}/>
+          <Route path="customers" element={<AdminCustomersPage />}/>
         </Route>
       </Routes>
     </div>

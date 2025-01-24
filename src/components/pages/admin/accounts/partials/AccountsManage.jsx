@@ -16,7 +16,6 @@ export const AccountsManage = ({ selected, setSelected }) => {
       <Button 
         className="flex items-center gap-2 !font-normal" 
         onClick={() => setNewModal(true)}
-        size="md"
       >
         <NewAccountModal open={newModal} setOpen={setNewModal} />
         <PlusCircleIcon className="size-5"/>
@@ -27,7 +26,6 @@ export const AccountsManage = ({ selected, setSelected }) => {
           className="flex items-center gap-2 !font-normal" 
           onClick={() => setEditModal(true)}
           color="green"
-          size="md"
           hierarchy="quiet"
         >
           <EditAccountModal open={editModal} setOpen={setEditModal} selected={selected} setSelected={setSelected} />
@@ -39,8 +37,7 @@ export const AccountsManage = ({ selected, setSelected }) => {
         <Button
           className="flex items-center gap-2 !font-normal"
           onClick={() => setDeleteModal(true)}
-          color="red" 
-          size="md"
+          color="red"
           hierarchy="quiet"
         >
           <DeleteAccountModal open={deleteModal} setOpen={setDeleteModal} selected={selected} setSelected={setSelected} />

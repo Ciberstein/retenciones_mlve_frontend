@@ -4,6 +4,7 @@ import cutString from '../../../utils/cutString';
 import { ChevronDoubleDownIcon, ChevronUpIcon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import { Input } from './Input';
 import { SearchOffOutlined } from '@mui/icons-material';
+import Card from '../Card';
 
 const variants = {
   sm: { className: 'text-sm p-1', size: 'small' },
@@ -69,7 +70,7 @@ export const Table = ({
   header = [],
   items = [],
   className = '',
-  size = 'sm',
+  size = 'md',
   title = null,
   check = null,
   selectRow = {
@@ -209,11 +210,11 @@ export const Table = ({
   }, [items, currentPage]);
 
   return (
-    <div className={`!p-0 overflow-auto rounded-lg border
-      bg-slate-50 h-full flex flex-col justify-between ${className}`}
+    <Card className={`!p-0 overflow-auto rounded-lg
+      h-full flex flex-col justify-between ${className}`}
     >
       <table className={`w-full ${currentItems.length === 0 && 'h-full'}`}>
-        <thead className="">
+        <thead>
           { element &&
 						<tr>
 							<th colSpan={cols}>
@@ -232,7 +233,7 @@ export const Table = ({
 									id="searchInput"
 									name="searchInput"
 									placeholder="Buscar"
-									className="!rounded-full dark:border-admin-dark-700 px-3"
+									className="!rounded-full px-3"
 									size={"md"}
 									value={searchText}
 									onChange={handleSearchChange}
@@ -245,7 +246,7 @@ export const Table = ({
 							</div>
 						</th>
 					</tr>
-          <tr className="bg-gray-200 dark:bg-zinc-950">
+          <tr className="bg-solid-gray-100 border-y">
             { check && (<th aria-label="check" />) }
             { header.map((th) => (
               <th className={`${variants[size].className} ${th.hidden && 'hidden'} p-4`} key={th.name}>
@@ -256,14 +257,14 @@ export const Table = ({
             { dropdown.component && <th className={`${variants[size].className} p-4`}>{dropdown.header}</th> }
           </tr>
         </thead>
-        <tbody className="bg-admin-light-600/50 dark:bg-admin-dark-600/50">
+        <tbody className="">
           { currentItems.length > 0
             ? currentItems.map((tr, index) => (
               <>
                 <tr 
                   className={`border-b 
-                    ${selectRow.active && 'hover:bg-gray-200/70 cursor-pointer'}
-                    ${selectRow.selected === tr && 'bg-gray-200/70 text-blue-400'}
+                    ${selectRow.active && 'hover:bg-solid-gray-100 cursor-pointer'}
+                    ${selectRow.selected === tr && 'bg-solid-gray-100 text-blue-400'}
                     ${variants[size].className}`
                   }
                   onClick={() => { selectRow.active && selectRow.setSelected(tr)}}
@@ -333,7 +334,7 @@ export const Table = ({
         <span className="font-normal">Total: {pagination.total || totalItems}</span>
         <div className="flex flex-wrap gap-4 text-black">
           <label htmlFor="tableRows" className="flex gap-4 items-center rounded-full p-1 px-3
-						bg-gray-200 font-normal"
+						bg-solid-gray-100 font-normal border"
           >
 						Filas:
 						<select
@@ -346,7 +347,7 @@ export const Table = ({
 							<option defaultValue={50}>50</option>
 						</select>
           </label>
-          <div className="p-1 rounded-full bg-gray-200">
+          <div className="p-1 rounded-full bg-solid-gray-100 border">
             <Pagination
               count={pagination.count || totalPages}
               page={pagination.page || currentPage}
@@ -358,6 +359,6 @@ export const Table = ({
           </div>
         </div>
       </div>
-    </div>
+    </Card>
   );
 };

@@ -23,12 +23,12 @@ export const PosAuthLayout = ({ children, className = '' }) => {
   }, [refresh]);
 
   return (
-    <div className="bg-bottom bg-cover bg-no-repeat dark:bg-zinc-800">
-      <div className="w-full h-screen flex flex-col gap-6 justify-center">
+    <div className="bg-bottom bg-cover bg-no-repeat">
+      <div className="w-full h-screen flex flex-col justify-center">
         <Navbar openSidebar={openSidebar} setOpenSidebar={setOpenSidebar}/>
-        <div className="h-full grid col-span-3 lg:grid-cols-5 gap-6 overflow-hidden mx-auto w-full lg:w-3/4 xl:w-4/5">
+        <div className="h-full grid col-span-3 lg:grid-cols-6 overflow-hidden mx-auto w-full">
           <Sidebar open={openSidebar} setOpen={setOpenSidebar}/>
-          <div className="col-span-4 h-full overflow-y-auto dark:text-white px-6 lg:p-0">
+          <div className="col-span-5 h-full overflow-y-auto dark:text-white p-6 bg-solid-gray-100">
             {children}
           </div>
         </div>

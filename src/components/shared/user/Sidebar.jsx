@@ -11,8 +11,8 @@ export const ContentSidebar = () => {
   const location = useLocation().pathname;
 
   const active = (path) => {
-    if(path === location) return '!bg-gradient-to-r'
-    return 'hover:!bg-gradient-to-r'
+    if(path === location) return '!border-meli-blue-500 !font-medium'
+    return 'hover:border-meli-blue-500'
   }
 
   const user_nav = [
@@ -52,15 +52,17 @@ export const ContentSidebar = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col">
       {
         admin_nav.map(item => (
           <NavLink as={Link} to={item.route} 
-            className={`${active(item.route)} dark:!from-zinc-950 dark:!via-zinc-900 
-              !from-gray-200 !via-gray-100 !to-transparent flex gap-3 items-center dark:text-white`} 
-            key={item.label}>
-            {item.icon}
-            {item.label}
+            className={`${active(item.route)} flex items-center !p-0 text-solid-gray-550 !bg-transparent
+              border-l-4 border-transparent text-sm hover:border-meli-blue-500 font-normal`
+            } 
+            key={item.label}
+          >
+            <span className="p-4">{item.icon}</span>
+            <span>{item.label}</span>
           </NavLink>
         ))
       }
@@ -82,8 +84,8 @@ export const DialogSidebar = ({ open, setOpen, children }) => {
               transition
               className="pointer-events-auto relative w-screen max-w-md transform transition duration-500 ease-in-out data-[closed]:-translate-x-full sm:duration-700"
             >
-              <div className="flex h-full flex-col overflow-y-auto bg-white dark:bg-zinc-800 shadow-xl p-4 gap-12">
-                <header className="flex gap-4 justify-between items-center">
+              <div className="flex h-full flex-col overflow-y-auto bg-solid-gray-100 shadow-xl gap-12">
+                <header className="flex gap-4 justify-between items-center p-4">
                   <img src={"/img/logo_large_plus@2x.webp"} className="max-h-10"/>
                   <button className="hover:text-gray-400 text-gray-900 transition-colors ease-out"
                     onClick={() => setOpen(false)}
@@ -110,7 +112,7 @@ export const Sidebar = ({
       <DialogSidebar open={open} setOpen={setOpen}>
         <ContentSidebar />
       </DialogSidebar>
-      <aside className="hidden lg:block">
+      <aside className="hidden lg:block pt-12">
         <ContentSidebar />
       </aside>
     </>
