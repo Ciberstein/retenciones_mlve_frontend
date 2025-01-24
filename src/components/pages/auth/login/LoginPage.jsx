@@ -62,7 +62,7 @@ export const LoginPage = () => {
         </h3>
       </div>
       <div>
-        <Card className="w-full sm:min-w-96">
+        <Card className="w-full sm:min-w-96 border shadow-none">
           <form className="flex flex-col gap-6" onSubmit={handleSubmit(submit)}>
             <Input 
               id="username"

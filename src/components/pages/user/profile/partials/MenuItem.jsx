@@ -14,7 +14,7 @@ const MenuItem = ({ icon = "", title = "", desc = "", url="" }) => {
           <span className="text-solid-gray-550">{desc}</span>
         </div>
       </div>
-      <ChevronRight />
+      <ChevronRight className="text-solid-gray-550" />
     </Link>
   )
 }
