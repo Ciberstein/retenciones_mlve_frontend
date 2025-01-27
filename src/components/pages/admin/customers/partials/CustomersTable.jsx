@@ -1,25 +1,41 @@
 import React from 'react'
 import { Table } from '../../../../elements/user/Table'
 
-export const CustomersTable = ({ title = "Mantenimiento de Clientes" }) => {
+export const CustomersTable = ({ title = "Mantenimiento de Clientes", data, selected, setSelected }) => {
 
   const header = [
 		{
-			field: 'id',
-			name: 'ID',
+			field: 'rif',
+			name: 'RIF',
 		},
 		{
-			field: 'createdAt',
-			name: 'Fecha',
-			date: true
+			field: 'cust_id',
+			name: 'Cust ID',
+		},
+    {
+			field: 'nickname',
+			name: 'Apodo',
+		},
+    {
+			field: 'name',
+			name: 'Razón social',
+		},
+    {
+			field: 'email',
+			name: 'E-mail',
 		},
 	]
 
   return (
 		<Table
 			header={header} 
-			items={[]}
+			items={data.data}
 			title={title}
+      selectRow={{
+        active: true,
+        selected,
+        setSelected
+      }}
 		/>
   )
 }
